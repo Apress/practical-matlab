@@ -1,0 +1,15 @@
+%Example8p3
+%This code solves Nicholson-Bailey Model
+clear all;close all;
+n=1; a=0.069; r=2; 
+ngens=25;  %number of generations
+time=1:1:ngens;
+H=zeros(1,ngens); P=zeros(1,ngens);
+P(1)=10; H(1)=22;%initial conditions 
+for t=1:ngens-1   
+    H(t+1)=r*H(t)*exp(- a*P(t) );
+    P(t+1)=n*H(t)*( 1 - exp(- a*P(t) ));
+end 
+plot(time,H,t)
+%plot(H,'b'),hold on, plot(P,'r'),hold off
+%legend('Host','Parasitoid')
